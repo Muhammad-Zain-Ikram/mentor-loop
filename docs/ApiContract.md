@@ -319,5 +319,20 @@ lib/emails/payment-success.ts
 ```text
 lib/resend.ts
 ```
+9. POST /api/v1/feedback
+Purpose
+Submit user feedback on a teaching session/report.
 
+Authentication
+✅ Required (Clerk)
+Request Body
+{ sessionId: string; tags: string[]; message: string; }
+Process
+Validate input with FeedbackInputSchema.
+Verify the user owns this session.
+Create a Feedback document in MongoDB.
+Response
+ts
+
+{ success: boolean; }
 ---
