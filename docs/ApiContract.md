@@ -219,6 +219,7 @@ Fetch the previously generated mastery report from the database.
 
 ```ts
 {
+  topic: string;
   summary: string;
   gaps: string[];
   insights: string;
