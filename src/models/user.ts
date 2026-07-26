@@ -23,7 +23,6 @@ const userSchema = new Schema<UserDocument>(
     email: {
       type: String,
       required: true,
-      index: true
     },
     name: {
       type: String,
