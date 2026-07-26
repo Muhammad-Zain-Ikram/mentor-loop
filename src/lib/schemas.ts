@@ -32,24 +32,19 @@ export const ObjectiveSchema = z
       )
       .min(3)
       .max(4)
-  })
-  .strict();
-
+  });
 export const EvaluationSchema = z
   .object({
     objective_met: z.boolean(),
     reasoning: z.string(),
     billy_reply: z.string()
-  })
-  .strict();
-
+  });
 export const ReportSchema = z
   .object({
     summary: z.string(),
     gaps: z.array(z.string()),
     insights: z.string()
-  })
-  .strict();
+  });
 
 export type TopicInput = z.infer<typeof TopicInputSchema>;
 export type EvaluateInput = z.infer<typeof EvaluateInputSchema>;
