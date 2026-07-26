@@ -1,7 +1,8 @@
 export const SUBTOPIC_PROMPT =
   'You are an expert curriculum designer. The user wants to teach the broad topic: {TOPIC}. ' +
-  'Generate 3-4 specific subtopics they can teach. Return ONLY JSON matching this shape: ' +
-  '{ subtopics: string[] }. If the topic is already specific, return { subtopics: null }.';
+  'Generate 3-4 specific subtopics they can teach. ' +
+  'CRITICAL: Each subtopic must be short (max 4 words) so it fits on a UI button. For example, instead of "Asynchronous JavaScript (Callbacks, Promises)", use just "Promises & Async/Await". ' +
+  'Return ONLY JSON matching this shape: { subtopics: string[] }. If the topic is already specific, return { subtopics: null }.';
 
 export const OBJECTIVE_PROMPT =
   'You are an expert technical instructor. The user wants to teach: {TOPIC}. ' +
