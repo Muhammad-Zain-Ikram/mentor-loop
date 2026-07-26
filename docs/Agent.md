@@ -490,7 +490,7 @@ Do **not** merely assert that a function exists.
 ## Prettier
 
 - Single quotes
-- 4-space indentation (or follow project standard)
+- 2-space indentation (or follow project standard)
 - Semicolons required
 - No trailing commas
 
