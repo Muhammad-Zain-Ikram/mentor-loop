@@ -17,10 +17,10 @@ export interface ChatHistoryEntry {
 
 export type SessionStatus = 'active' | 'completed';
 export type SessionReport = {
-    summary : string;
+    summary: string;
     gaps: string[];
     insights: string;
-}
+};
 export interface SessionDocument {
     userId: Types.ObjectId;
     topic: string;
@@ -79,6 +79,26 @@ const chatHistoryEntrySchema = new Schema<ChatHistoryEntry>(
     }
 );
 
+const reportSchema = new Schema<SessionReport>(
+    {
+        summary: {
+            type: String,
+            required: true
+        },
+        gaps: {
+            type: [String],
+            required: true
+        },
+        insights: {
+            type: String,
+            required: true
+        }
+    },
+    {
+        _id: false
+    }
+);
+
 const sessionSchema = new Schema<SessionDocument>(
     {
         userId: {
@@ -112,11 +132,7 @@ const sessionSchema = new Schema<SessionDocument>(
             default: 'active'
         },
         report: {
-            type: {
-                summary: String,
-                gaps: [String],
-                insights: String
-            },
+            type: reportSchema,
             default: null
         }
     },
