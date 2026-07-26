@@ -45,7 +45,14 @@ export const ReportSchema = z
     gaps: z.array(z.string()),
     insights: z.string()
   });
+  
+export const FeedbackInputSchema = z.object({
+  sessionId: z.string().length(24), // MongoDB ObjectId length
+  tags: z.array(z.string()).min(1).max(3), // Let them pick 1 to 3 tags
+  message: z.string().min(10).max(1000)
+}).strict();
 
+export type FeedbackInput = z.infer<typeof FeedbackInputSchema>;
 export type TopicInput = z.infer<typeof TopicInputSchema>;
 export type EvaluateInput = z.infer<typeof EvaluateInputSchema>;
 export type SubtopicOutput = z.infer<typeof SubtopicSchema>;
