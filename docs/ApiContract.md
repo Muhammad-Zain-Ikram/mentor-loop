@@ -195,7 +195,37 @@ Generate the final learning mastery report.
   insights: string;
 }
 ```
+# 5.1 GET `/api/v1/sessions/[sessionId]/report`
 
+## Purpose
+
+Fetch the previously generated mastery report from the database.
+
+## Authentication
+
+- ✅ Required (Clerk)
+- User must own the session.
+
+## Process
+
+1. Fetch the session using:
+   - `_id`
+   - `userId`
+2. Check whether `session.report` exists.
+3. If the report does not exist, return **HTTP 404** with the error code `REPORT_NOT_GENERATED`.
+4. If the report exists, return the stored report object.
+
+## Response
+
+```ts
+{
+  summary: string;
+  gaps: string[];
+  insights: string;
+}
+```
+
+---
 ---
 
 # 6. GET `/api/v1/user`
