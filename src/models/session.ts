@@ -16,7 +16,11 @@ export interface ChatHistoryEntry {
 }
 
 export type SessionStatus = 'active' | 'completed';
-
+export type SessionReport = {
+    summary : string;
+    gaps: string[];
+    insights: string;
+}
 export interface SessionDocument {
     userId: Types.ObjectId;
     topic: string;
@@ -24,6 +28,7 @@ export interface SessionDocument {
     chatHistory: ChatHistoryEntry[];
     billyUnderstanding: number;
     status: SessionStatus;
+    report: SessionReport | null;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -105,6 +110,14 @@ const sessionSchema = new Schema<SessionDocument>(
             enum: ['active', 'completed'],
             required: true,
             default: 'active'
+        },
+        report: {
+            type: {
+                summary: String,
+                gaps: [String],
+                insights: String
+            },
+            default: null
         }
     },
     {
