@@ -220,6 +220,15 @@ export async function GET(
 
   return NextResponse.json({
     topic: session.topic,
-    ...report
+    billyUnderstanding: session.billyUnderstanding,
+    objectives: session.objectives.map(obj => ({
+      title: obj.title,
+      isCompleted: obj.isCompleted
+    })),
+    report: {
+      summary: report.summary,
+      gaps: report.gaps,
+      insights: report.insights
+    }
   });
 }
