@@ -17,6 +17,8 @@ type SessionRouteContext = {
 
 export const runtime = 'nodejs';
 
+const RECENT_CHAT_HISTORY_LIMIT = 8;
+
 function createErrorResponse(
   code: string,
   message: string,
@@ -130,11 +132,18 @@ export async function POST(
     );
   }
 
+  const recentChatHistory = session.chatHistory
+    .slice(-RECENT_CHAT_HISTORY_LIMIT)
+    .map((message) => ({
+      role: message.role,
+      content: message.content
+    }));
   const systemPrompt = EVALUATION_PROMPT.replace(
     '{OBJECTIVE_TITLE}',
     objective.title
   )
     .replace('{OBJECTIVE_DESCRIPTION}', objective.description)
+    .replace('{CHAT_HISTORY}', JSON.stringify(recentChatHistory))
     .replace('{USER_MESSAGE}', inputResult.data.userMessage);
 
   let aiContent: string;
