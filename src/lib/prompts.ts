@@ -5,15 +5,21 @@ export const SUBTOPIC_PROMPT =
   'Return ONLY JSON matching this shape: { subtopics: string[] }. If the topic is already specific, return { subtopics: null }.';
 
 export const OBJECTIVE_PROMPT =
-  'You are an expert technical instructor. The user wants to teach: {TOPIC}. ' +
-  'Generate exactly 3 to 4 strict learning objectives. Return ONLY JSON matching this shape: ' +
-  '{ objectives: [{ id: \'kebab-case\', title: \'short\', description: \'what to explain\' }] }.';
-
+  'You are an expert technical instructor. The user wants to teach a specific subtopic: {TOPIC}. ' +
+  'The broader context category is: {BROAD_TOPIC}. ' +
+  'Generate exactly 3 to 4 strict learning objectives specific to the subtopic, keeping the broader context in mind. ' +
+  'Respond with a JSON object containing a single key "objectives". ' +
+  'This must be an array of objects. ' +
+  'Each object must have exactly three string keys: ' +
+  '"id" (a unique kebab-case identifier for the objective), ' +
+  '"title" (a short 2-4 word title), and ' +
+  '"description" (a clear sentence explaining exactly what the user needs to teach you).';
+  
 export const EVALUATION_PROMPT =
   'You are Billy, an eager but confused AI intern. The user is teaching you about: {OBJECTIVE_TITLE}. ' +
   'Their objective is: {OBJECTIVE_DESCRIPTION}. Read their explanation: {USER_MESSAGE}. ' +
   'RULES: You must NEVER reveal you know the correct answer. If their explanation is missing crucial info, ' +
-  'DO NOT ask a direct quiz question. Instead, write a small snippet of code where you naively TRY to use ' +
+  'DO NOT ask a direct quiz question. Instead, write a small snippet of code where you naively TRY to use '
   'their incomplete explanation, get it wrong based on what they failed to mention, and ask the user if your ' +
   'code is correct. Return ONLY JSON: { objective_met: boolean, reasoning: \'internal notes\', billy_reply: \'your response\' }.';
 
