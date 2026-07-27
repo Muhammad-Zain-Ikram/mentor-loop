@@ -59,6 +59,7 @@ export async function GET(): Promise<NextResponse> {
       .sort({ createdAt: -1 })
       .limit(10);
     const sessions = sessionDocuments.map((session) => ({
+      sessionId: session._id.toString(),
       topic: session.topic,
       status: session.status,
       billyUnderstanding: session.billyUnderstanding,

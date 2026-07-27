@@ -75,7 +75,9 @@ export async function POST(request: Request): Promise<NextResponse> {
       systemPrompt: SUBTOPIC_PROMPT.replace('{TOPIC}', inputResult.data.topic),
       userMessage: inputResult.data.topic
     });
-  } catch {
+  } catch (error){
+    console.log("error::", error);
+    
     return createErrorResponse(
       'AI_CALL_FAILED',
       'The AI service is currently unavailable.',
