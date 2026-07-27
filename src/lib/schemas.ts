@@ -6,6 +6,13 @@ export const TopicInputSchema = z
   })
   .strict();
 
+export const CreateSessionInputSchema = z
+  .object({
+    topic: z.string().min(2).max(100),
+    broadTopic: z.string().min(2).max(100)
+  })
+  .strict();
+
 export const EvaluateInputSchema = z
   .object({
     userMessage: z.string().min(5).max(2000)
@@ -54,6 +61,7 @@ export const FeedbackInputSchema = z.object({
 
 export type FeedbackInput = z.infer<typeof FeedbackInputSchema>;
 export type TopicInput = z.infer<typeof TopicInputSchema>;
+export type CreateSessionInput = z.infer<typeof CreateSessionInputSchema>;
 export type EvaluateInput = z.infer<typeof EvaluateInputSchema>;
 export type SubtopicOutput = z.infer<typeof SubtopicSchema>;
 export type ObjectiveOutput = z.infer<typeof ObjectiveSchema>;
