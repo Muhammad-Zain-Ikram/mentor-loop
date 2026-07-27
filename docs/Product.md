@@ -1,49 +1,206 @@
-# Product
+# MentorLoop — Product Overview
 
 ## Register
 
-brand
+- **Brand:** MentorLoop
+- **Platform:** Web (Next.js)
+- **Tagline:** *Teach an AI junior developer. Discover what you actually understand.*
 
-## Platform
+---
 
-web
+# Users & Target Audience
 
-## Users
+MentorLoop is built for:
 
-MentorLoop serves software developers and computer science students learning technical concepts such as Redis, Docker, JWT, Git, REST APIs, databases, and system design. They use it to turn passive familiarity into active understanding: explain a concept clearly, uncover misconceptions before using it in projects or interviews, and leave able to teach it with confidence.
+- Self-taught developers who want to be job ready
+- Coding bootcamp graduates who want to verify and they learn topic deeply
+- Developers preparing for technical interviews
 
-## Product Purpose
+These users often suffer from the **illusion of competence** after passively consuming tutorials. They need a way to validate whether they truly understand technical concepts—such as Redis, Docker, JWT, or React Hooks—before applying them in projects or interviews.
 
-MentorLoop lets learners teach a simulated AI junior developer and receives structured feedback on their explanation. Success is demonstrated understanding—not a completed chat—through clear learning objectives, misconception detection, and meaningful lesson completion.
+---
 
-## Positioning
+# Product Purpose
 
-Unlike AI tutors that explain concepts to the learner, MentorLoop evaluates the learner's explanation against structured learning objectives and misconceptions, marking a lesson complete only when they have demonstrated understanding.
+MentorLoop allows learners to **teach** a simulated AI junior developer named **Billy**.
 
-## Conversion & proof
+Instead of providing explanations, the platform requires users to articulate concepts in their own words. Billy intentionally misunderstands explanations and asks follow-up questions, forcing learners to refine their thinking.
 
-- Primary CTA: Start teaching.
-- Secondary CTA: Watch the demo.
-- The line a visitor remembers after 10 seconds: Teach an AI junior developer. Discover what you actually understand.
-- Belief ladder: Visitors understand that they teach a simulated AI junior developer and their understanding is evaluated; recognize this differs from AI tutors because it measures understanding rather than supplies answers; see that learning-by-teaching has real value; trust the learning-objective, misconception, and progress feedback; and know they can try it quickly by connecting their own AI provider, choosing a topic, and starting.
-- Proof on hand: Protégé Effect and learning-by-teaching research; a working evaluation engine that tracks objectives, identifies misconceptions, and measures understanding; and a 90-second end-to-end lesson demo.
+The platform evaluates each explanation against predefined learning objectives and known misconceptions stored in the database. A lesson is only considered complete once the learner has demonstrated genuine understanding.
 
-## Brand Personality
+---
 
-Intelligent, trustworthy, and focused. The landing experience should give visitors the confidence of a professional engineering tool: measurable learning, clear progress, and feedback they can trust.
+# Core Features (V1)
 
-## Anti-references
+## 1. Topic Scoping
 
-Avoid generic AI-chatbot interfaces (ChatGPT, Claude, Gemini, Copilot); cluttered developer dashboards (Grafana, Kibana, Datadog, Supabase, Firebase); academic LMS products (Moodle, Blackboard, Canvas, Google Classroom); gamified learning apps (Duolingo, Kahoot!, Quizizz); cyberpunk AI marketing; and enterprise CRM complexity. Do not make Billy a virtual assistant, tutor, mascot, or game character. Avoid decorative grids, excess shadows, floating cards, gradients, glassmorphism, bubble-like UI, casual open-ended chat, and visual noise. Cursor, Linear, Raycast, Vercel, and Notion are positive references for their developer focus, typography, interaction polish, restraint, and readable hierarchy.
+- User enters a broad topic (e.g. **JavaScript**)
+- AI generates **3–4 focused subtopics**
+  - Object-Oriented Programming
+  - Async JavaScript
+  - Closures
+  - Event Loop
+- User selects one subtopic.
 
-## Design Principles
+---
 
-1. Make demonstrated understanding visible: objectives, misconceptions, and progress are first-class product evidence.
-2. Treat every interaction as purposeful movement toward a completed lesson.
-3. Earn trust through clear, structured feedback rather than AI spectacle.
-4. Design the learner as a mentor to a junior developer, not a student completing a quiz or a user chatting with a bot.
-5. Keep the experience focused, legible, and quick to begin.
+## 2. Objective Generation
 
-## Accessibility & Inclusion
+For the selected subtopic, AI generates **3–4 strict learning objectives**.
 
-Meet WCAG AA contrast requirements. The experience must be keyboard-first, support screen readers and color-vision differences, respect reduced-motion preferences, and provide clear loading feedback for asynchronous work.
+These objectives define exactly what must be demonstrated before mastery is awarded.
+
+---
+
+## 3. The Teaching Loop
+
+The learner teaches Billy through a chat interface.
+
+Billy behaves like a junior developer or intern:
+
+- Attempts to apply the explanation
+- Makes realistic mistakes
+- Asks clarifying questions
+- Forces the learner to explain concepts more precisely
+
+The learner acts as the mentor—not the student.
+
+---
+
+## 4. Validation Engine
+
+The backend evaluates every explanation using structured **Zod schemas**.
+
+Validation determines whether the learner has:
+
+- Covered required concepts
+- Avoided common misconceptions
+- Demonstrated sufficient understanding
+
+The learner's mastery progress is updated in the database.
+
+---
+
+## 5. Mastery Report
+
+Once all objectives reach **100% completion**, MentorLoop generates a shareable mastery report containing:
+
+- Validated learning objectives
+- Remaining conceptual gaps
+- Key insights from the teaching session
+- Evidence of demonstrated understanding
+
+---
+
+# Business Model
+
+## Free Tier
+
+- 3 learning credit
+- Designed to deliver the initial "aha" moment
+
+---
+
+## Pro Tier ($5 one-time)
+
+- 50 learning credits
+- No subscriptions
+- No recurring payments
+
+
+---
+
+# Positioning
+
+Unlike AI tutors such as ChatGPT or Claude that explain concepts to learners, MentorLoop evaluates the learner's explanations.
+
+Its purpose is to measure understanding rather than deliver information, leveraging the **Protégé Effect** to reinforce learning through teaching.
+
+---
+
+# Brand Personality
+
+MentorLoop should feel:
+
+- Intelligent
+- Trustworthy
+- Professional
+- Focused
+- Engineering-first
+
+The landing experience should communicate:
+
+- Measurable learning
+- Clear progress
+- Reliable feedback
+- Confidence in the evaluation process
+
+---
+
+# Anti-References
+
+Avoid visual patterns associated with:
+
+- Generic AI chatbot interfaces
+- Cluttered developer dashboards
+- Academic LMS platforms
+- Gamified learning apps (e.g. Duolingo)
+- Cyberpunk AI aesthetics
+
+Billy should **not** be presented as:
+
+- A virtual assistant
+- A tutor
+- A game character
+
+Also avoid:
+
+- Decorative grids
+- Heavy shadows
+- Gradients
+- Glassmorphism
+- Bubble-style UI
+- Visual noise
+
+---
+
+# Positive References
+
+Design inspiration should come from products such as:
+
+- Cursor
+- Linear
+- Raycast
+- Vercel
+- Notion
+
+Key characteristics:
+
+- Restrained visual design
+- Excellent typography
+- Strong hierarchy
+- Fast interactions
+- Developer-focused workflows
+- High readability
+
+---
+
+# Design Principles
+
+1. Make demonstrated understanding visible through objectives, and progress.
+2. Ensure every interaction moves the learner closer to lesson completion.
+3. Build trust with structured, evidence-based feedback instead of AI spectacle.
+4. Position the learner as the mentor of a junior developer, not a student taking a quiz.
+5. Keep the experience focused, legible, and fast to begin.
+
+---
+
+# Accessibility & Inclusion
+
+MentorLoop should:
+
+- Meet **WCAG AA** contrast requirements
+- Support keyboard-first navigation
+- Be compatible with screen readers
+- Respect reduced-motion preferences
+- Provide clear loading and progress feedback during asynchronous operations
