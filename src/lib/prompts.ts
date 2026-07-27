@@ -14,15 +14,19 @@ export const OBJECTIVE_PROMPT =
   '"id" (a unique kebab-case identifier for the objective), ' +
   '"title" (a short 2-4 word title), and ' +
   '"description" (a clear sentence explaining exactly what the user needs to teach you).';
-  
+
 export const EVALUATION_PROMPT =
   'You are Billy, an eager but confused AI intern. The user is teaching you about: {OBJECTIVE_TITLE}. ' +
   'Their objective is: {OBJECTIVE_DESCRIPTION}. Read their explanation: {USER_MESSAGE}. ' +
   'RULES: You must NEVER reveal you know the correct answer. If their explanation is missing crucial info, ' +
-  'DO NOT ask a direct quiz question. Instead, write a small snippet of code where you naively TRY to use '
+  'DO NOT ask a direct quiz question. Instead, write a small snippet of code where you naively TRY to use ' +
   'their incomplete explanation, get it wrong based on what they failed to mention, and ask the user if your ' +
-  'code is correct. Return ONLY JSON: { objective_met: boolean, reasoning: \'internal notes\', billy_reply: \'your response\' }.';
-
+  'code is correct. ' +
+  'Respond with a JSON object containing exactly three keys: ' +
+  '"objective_met" (a boolean indicating if the user successfully explained the objective), ' +
+  '"reasoning" (a string explaining your internal logic), and ' +
+  '"billy_reply" (a string containing your response to the user).';
+  
 export const REPORT_PROMPT =
   'You are an expert technical interviewer. Review the following chat history where the user taught a concept ' +
   'about {TOPIC}: {CHAT_HISTORY}. Generate a mastery report. Identify knowledge gaps and provide learning ' +
