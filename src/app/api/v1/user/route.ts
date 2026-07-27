@@ -49,7 +49,7 @@ export async function GET(): Promise<NextResponse> {
   try {
     await connectToDatabase();
 
-    const user = await User.findOne({ clerkId: userId }).select('_id credits');
+    const user = await User.findOne({ clerkId: userId }).select('_id credits email name avatarUrl');
 
     if (!user) {
       return createErrorResponse('USER_NOT_FOUND', 'User not found.', 404);
@@ -65,9 +65,13 @@ export async function GET(): Promise<NextResponse> {
       createdAt: session.createdAt
     }));
 
+    // In your GET /api/v1/user route, update the return statement:
     return NextResponse.json({
+      name: user.name,
+      email: user.email,
+      avatarUrl: user.avatarUrl,
       credits: user.credits,
-      sessions
+      sessions: sessions
     });
   } catch {
     return createErrorResponse(
