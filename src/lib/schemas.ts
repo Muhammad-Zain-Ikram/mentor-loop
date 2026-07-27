@@ -52,12 +52,37 @@ export const ReportSchema = z
     gaps: z.array(z.string()),
     insights: z.string()
   });
+
+export const FollowUpQuestionSchema = z
+  .object({
+    question: z.string().min(1).max(500)
+  })
+  .strict();
   
 export const FeedbackInputSchema = z.object({
   sessionId: z.string().length(24), // MongoDB ObjectId length
   tags: z.array(z.string()).min(1).max(3), // Let them pick 1 to 3 tags
   message: z.string().min(10).max(1000)
 }).strict();
+
+export const LemonSqueezyEventSchema = z.object({
+  meta: z.object({
+    event_name: z.string()
+  })
+});
+
+export const LemonSqueezyOrderCreatedSchema = z.object({
+  meta: z.object({
+    event_name: z.literal('order_created')
+  }),
+  data: z.object({
+    id: z.string().min(1),
+    type: z.literal('orders'),
+    attributes: z.object({
+      user_email: z.string().email()
+    })
+  })
+});
 
 export type FeedbackInput = z.infer<typeof FeedbackInputSchema>;
 export type TopicInput = z.infer<typeof TopicInputSchema>;
@@ -67,3 +92,8 @@ export type SubtopicOutput = z.infer<typeof SubtopicSchema>;
 export type ObjectiveOutput = z.infer<typeof ObjectiveSchema>;
 export type EvaluationOutput = z.infer<typeof EvaluationSchema>;
 export type ReportOutput = z.infer<typeof ReportSchema>;
+export type FollowUpQuestion = z.infer<typeof FollowUpQuestionSchema>;
+export type LemonSqueezyEvent = z.infer<typeof LemonSqueezyEventSchema>;
+export type LemonSqueezyOrderCreated = z.infer<
+  typeof LemonSqueezyOrderCreatedSchema
+>;
